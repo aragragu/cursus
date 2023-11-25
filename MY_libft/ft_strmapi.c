@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 10:43:57 by aragragu          #+#    #+#             */
-/*   Updated: 2023/11/24 18:10:39 by aragragu         ###   ########.fr       */
+/*   Updated: 2023/11/25 21:21:11 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int			i;
+	size_t		i;
 	char		*p;
 
 	i = 0;

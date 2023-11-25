@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:48:33 by aragragu          #+#    #+#             */
-/*   Updated: 2023/11/22 18:46:49 by aragragu         ###   ########.fr       */
+/*   Updated: 2023/11/25 21:19:11 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		current = next;
 	}
 	*lst = NULL;
+}
+
+void	del(void *content)
+{
+	free(content);
 }

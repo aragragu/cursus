@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:46:05 by aragragu          #+#    #+#             */
-/*   Updated: 2023/11/10 20:05:22 by aragragu         ###   ########.fr       */
+/*   Updated: 2023/11/25 18:26:50 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,12 @@ int	ft_atoi(const char *str)
 	}
 	result *= sign;
 	return (result);
+}
+
+int main(int argc, char *argv[])
+{
+	if (argc < 2)
+		return (0);
+	printf("|%d|\n", ft_atoi(argv[1]));
+	printf("|%d|", atoi(argv[1]));
 }

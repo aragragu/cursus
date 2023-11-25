@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:51:26 by aragragu          #+#    #+#             */
-/*   Updated: 2023/11/22 19:19:57 by aragragu         ###   ########.fr       */
+/*   Updated: 2023/11/25 19:42:47 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,3 +57,10 @@ char	*ft_itoa(int nb)
 	}
 	return (num);
 }
+
+
+// int main()
+// {
+// 	int i = 23133271;
+// 	printf("%s", ft_itoa(i));
+// }
