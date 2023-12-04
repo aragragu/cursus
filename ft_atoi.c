@@ -6,13 +6,13 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:46:05 by aragragu          #+#    #+#             */
-/*   Updated: 2023/11/29 18:35:04 by aragragu         ###   ########.fr       */
+/*   Updated: 2023/12/04 15:32:43 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	check_num(int sign)
+static int	check_sign(int sign)
 {
 	if (sign == (-1))
 		return (0);
@@ -21,29 +21,29 @@ static int	check_num(int sign)
 
 int	ft_atoi(const char *str)
 {
-	int				i;
-	int				sign;
-	unsigned long	result;
-	int				count;
+	int					sign;
+	unsigned long		result;
+	int					count;
 
-	i = 0;
 	sign = 1;
 	result = 0;
 	count = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		if (str[i] == '-')
+		if (*str == '-')
 			sign *= -1;
-		i++;
+		str++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (*str >= '0' && *str <= '9')
 	{
-		result = result * 10 + (str[i++] - '0');
+		result = result * 10 + (*str++ - '0');
 		count++;
 	}
-	if (result > __LONG_MAX__ && count >= 20)
-		return (check_num(sign));
-	return (result * sign);
+	if (result < INT_MAX)
+		return (result * sign);
+	else if (count >= 19)
+		return (check_sign(sign));
+	return ((int)(result * sign));
 }

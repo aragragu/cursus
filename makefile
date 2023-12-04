@@ -6,7 +6,7 @@
 #    By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 18:37:36 by aragragu          #+#    #+#              #
-#    Updated: 2023/11/29 18:31:20 by aragragu         ###   ########.fr        #
+#    Updated: 2023/12/04 17:35:43 by aragragu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@
 NAME = 	libft.a
 CC = cc 
 CFLAGS = -Wall -Wextra -Werror
-AR = ar -rcs
-RM = rm -f
+AR = ar -rc
+RM = rm -rf
 SRC = ft_isalnum.c ft_isascii.c ft_isprint.c ft_memmove.c \
 	  ft_strlen.c ft_bzero.c ft_isalpha.c ft_isdigit.c ft_memcpy.c ft_memset.c\
 	  ft_strlcpy.c ft_strlcat.c ft_strchr.c ft_toupper.c ft_tolower.c ft_strrchr.c\
@@ -47,4 +47,4 @@ clean:
 fclean: clean
 	$(RM) $(NAME) $(bonus)
 
-re: fclean all  
+re: fclean all

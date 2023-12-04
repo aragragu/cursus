@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:03:59 by aragragu          #+#    #+#             */
-/*   Updated: 2023/11/12 21:47:50 by aragragu         ###   ########.fr       */
+/*   Updated: 2023/12/03 18:30:08 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*data;
 
+	if (count > 0 && size > 9223372036854775807ULL / count)
+		return (0);
 	data = malloc(count * size);
 	if (!data)
 		return (NULL);
-	ft_bzero(data, count * size);
+	ft_bzero(data, (count * size));
 	return (data);
 }

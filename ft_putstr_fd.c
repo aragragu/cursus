@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:52:15 by aragragu          #+#    #+#             */
-/*   Updated: 2023/11/24 18:35:48 by aragragu         ###   ########.fr       */
+/*   Updated: 2023/12/04 15:12:06 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ void	ft_putstr_fd(char *s, int fd)
 	int	i;
 
 	i = 0;
-	if (fd < 0)
-		return ;
-	if (!s)
+	if (!s || fd < 0)
 		return ;
 	while (s[i] != '\0')
 	{

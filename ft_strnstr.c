@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 18:40:09 by aragragu          #+#    #+#             */
-/*   Updated: 2023/11/29 18:30:37 by aragragu         ###   ########.fr       */
+/*   Updated: 2023/12/04 17:28:44 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		return (NULL);
 	while (*haystack && len > 0)
 	{
-		if (*haystack == *needle 
+		if (*haystack == *needle
 			&& my_ft_strncmp(haystack, needle, ft_strlen(needle), len) == 0)
 			return ((char *)haystack);
 		haystack++;

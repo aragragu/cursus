@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 23:41:53 by aragragu          #+#    #+#             */
-/*   Updated: 2023/11/28 13:48:09 by aragragu         ###   ########.fr       */
+/*   Updated: 2023/12/04 17:40:54 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static	size_t	count_letter(const char *s, int position, char c)
 	return (i);
 }
 
-void	ft_free1(char **reslut, int len)
+static void	ft_free1(char **reslut, int len)
 {
 	int		i;
 
@@ -99,6 +99,6 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	result[count] = NULL;
 	i = 0;
-	result = allocation(result, s, i, c); 
+	result = allocation(result, s, i, c);
 	return (result);
 }
