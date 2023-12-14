@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:14:41 by aragragu          #+#    #+#             */
-/*   Updated: 2023/11/29 19:37:58 by aragragu         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:01:41 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putnbr_fd(int n, int fd)
 	long		x;
 
 	x = (long)n;
+	if (fd < 0)
+		return ;
 	if (n < 0)
 	{
 		ft_putchar_fd('-', fd);

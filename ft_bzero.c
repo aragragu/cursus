@@ -6,13 +6,13 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:44 by aragragu          #+#    #+#             */
-/*   Updated: 2023/12/03 18:24:02 by aragragu         ###   ########.fr       */
+/*   Updated: 2023/12/13 18:41:40 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(char *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	size_t	i;
 	char	*ptr;

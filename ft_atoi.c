@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:46:05 by aragragu          #+#    #+#             */
-/*   Updated: 2023/12/04 15:32:43 by aragragu         ###   ########.fr       */
+/*   Updated: 2023/12/14 14:36:51 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,10 @@ static int	check_sign(int sign)
 int	ft_atoi(const char *str)
 {
 	int					sign;
-	unsigned long		result;
-	int					count;
+	unsigned long long	result;
 
 	sign = 1;
 	result = 0;
-	count = 0;
 	while ((*str >= 9 && *str <= 13) || *str == 32)
 		str++;
 	if (*str == '-' || *str == '+')
@@ -38,12 +36,9 @@ int	ft_atoi(const char *str)
 	}
 	while (*str >= '0' && *str <= '9')
 	{
+		if (result > (9223372036854775807ULL - (*str - '0')) / 10)
+			return (check_sign(sign));
 		result = result * 10 + (*str++ - '0');
-		count++;
 	}
-	if (result < INT_MAX)
-		return (result * sign);
-	else if (count >= 19)
-		return (check_sign(sign));
 	return ((int)(result * sign));
 }
