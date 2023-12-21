@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:35:45 by aragragu          #+#    #+#             */
-/*   Updated: 2023/12/21 13:01:14 by aragragu         ###   ########.fr       */
+/*   Updated: 2023/12/21 19:26:04 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,31 +31,32 @@ static	void	check_flag(va_list args, const char s, int *count)
 		ft_puthexa(va_arg(args, unsigned int), count, "0123456789abcdef");
 	else if (s == 'X')
 		ft_puthexa(va_arg(args, int), count, "0123456789ABCDEF");
-	else if (s == '%')
+	else
 		ft_putchar(s, count);
 }
 
 int	ft_printf(const char *format, ...)
 {
-	int		count;
 	va_list	ptr;
+	int		count;
 
-	count = 0;
-	va_start(ptr, format);
-	if (write(1, "", 0) == -1)
+	if (write(1, 0, 0) == -1)
 		return (-1);
+	va_start(ptr, format);
+	count = 0;
 	while (*format)
 	{
-		if (*format == '%')
+		if (*format == '%' && !*(format + 1))
+			break ;
+		else if (*format == '%')
 		{
 			format++;
 			check_flag(ptr, *format, &count);
 		}
 		else
-		{
 			ft_putchar(*format, &count);
-		}
 		format++;
 	}
+	va_end(ptr);
 	return (count);
 }
