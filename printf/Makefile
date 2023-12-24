@@ -6,7 +6,7 @@
 #    By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/17 18:21:29 by aragragu          #+#    #+#              #
-#    Updated: 2023/12/21 13:01:40 by aragragu         ###   ########.fr        #
+#    Updated: 2023/12/23 18:06:01 by aragragu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,21 +20,21 @@ OBJ := $(SRC:%.c=%.o)
 
 %.o : %.c ft_printf.h
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "compiling"
+	@echo "compiling..."
 	
 all : $(NAME)
 
 $(NAME) : $(OBJ)
 	@$(AR) $(NAME) $(OBJ)
-	@echo "archiving"
+	@echo "archiving..."
 
 clean: 
-	$(RM) $(OBJ)
-	@echo "removing object files"
+	@$(RM) $(OBJ)
+	@echo "removing object files..."
 
 fclean: clean
-	$(RM) $(NAME)
-	@echo "removing all"
+	@$(RM) $(NAME)
+	@echo "removing all..."
 
 re: fclean all
 

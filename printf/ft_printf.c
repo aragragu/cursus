@@ -6,13 +6,13 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:35:45 by aragragu          #+#    #+#             */
-/*   Updated: 2023/12/21 19:26:04 by aragragu         ###   ########.fr       */
+/*   Updated: 2023/12/24 11:03:39 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	void	check_flag(va_list args, const char s, int *count)
+void	check_flag(va_list args, const char s, int *count)
 {
 	if (s == 'd' || s == 'i')
 		ft_putnbr(va_arg(args, int), count);
@@ -26,11 +26,11 @@ static	void	check_flag(va_list args, const char s, int *count)
 		ft_putadress(va_arg(args, unsigned long), count, "0123456789abcdef");
 	}
 	else if (s == 'u')
-		ft_putunsigned(va_arg(args, int), count);
+		ft_putunsigned(va_arg(args, unsigned int), count);
 	else if (s == 'x')
 		ft_puthexa(va_arg(args, unsigned int), count, "0123456789abcdef");
 	else if (s == 'X')
-		ft_puthexa(va_arg(args, int), count, "0123456789ABCDEF");
+		ft_puthexa(va_arg(args, unsigned int), count, "0123456789ABCDEF");
 	else
 		ft_putchar(s, count);
 }

@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:51:48 by aragragu          #+#    #+#             */
-/*   Updated: 2023/12/21 12:56:55 by aragragu         ###   ########.fr       */
+/*   Updated: 2023/12/22 15:46:51 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 void	ft_puthexa(unsigned int n, int *count, char *s)
 {
-	long	nb;
-
-	nb = (long)n;
-	if (nb > 15)
+	if (n > 15)
 	{
-		ft_puthexa(nb / 16, count, s);
+		ft_puthexa(n / 16, count, s);
 	}
-	ft_putchar(s[nb % 16], count);
+	ft_putchar(s[n % 16], count);
 }
