@@ -6,7 +6,7 @@
 #    By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/17 18:21:29 by aragragu          #+#    #+#              #
-#    Updated: 2023/12/23 18:06:01 by aragragu         ###   ########.fr        #
+#    Updated: 2023/12/28 16:35:59 by aragragu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "removing all..."
+	@echo "removing libftprintf..."
 
 re: fclean all
 

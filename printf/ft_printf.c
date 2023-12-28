@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:35:45 by aragragu          #+#    #+#             */
-/*   Updated: 2023/12/24 11:03:39 by aragragu         ###   ########.fr       */
+/*   Updated: 2023/12/28 15:59:02 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	check_flag(va_list args, const char s, int *count)
 		ft_putnbr(va_arg(args, int), count);
 	else if (s == 's')
 		ft_putstr(va_arg(args, char *), count);
-	else if (s == 'c')
+	else if (s == 'c')	
 		ft_putchar(va_arg(args, int), count);
 	else if (s == 'p')
 	{
@@ -59,4 +59,17 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(ptr);
 	return (count);
+}
+#include <stdio.h>
+int main()
+{
+	int i;
+	i = 45;
+	//int c,y;
+	ft_printf("%d",010);
+	printf("\n");
+	printf("%d",010);
+	printf("\n");
+	//printf("%d\t%d",c,y);
+	return 0;
 }
