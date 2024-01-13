@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:35:45 by aragragu          #+#    #+#             */
-/*   Updated: 2023/12/28 15:59:02 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:20:51 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,9 @@ int main()
 {
 	int i;
 	i = 45;
-	//int c,y;
-	ft_printf("%d",010);
+	int c,y;
+	ft_printf("%d%d%d%d%d%d",010, 15, 15, 897, c, y);
+	printf("\n%d%d%d%d%d%d",010, 15, 15, 897, c, y);
 	printf("\n");
 	printf("%d",010);
 	printf("\n");
