@@ -6,17 +6,17 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 15:01:38 by aragragu          #+#    #+#             */
-/*   Updated: 2023/12/28 16:37:28 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/01/17 22:13:06 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
 	size_t	len;
 
-	if (s == NULL)
+	if (!s)
 		return (0);
 	len = 0;
 	while (s[len] != '\0')
@@ -48,10 +48,8 @@ int	ft_strchr(char *s, int c)
 	int	i;
 
 	i = 0;
-	if (s == NULL)
+	if (!s)
 		return (0);
-	if (c == '\0')
-		return (1);
 	while (s[i] != '\0')
 	{
 		if (s[i] == (char) c)
@@ -66,19 +64,20 @@ char	*ft_strjoin(char *s1, char *buff)
 	char			*ptr;
 	size_t			i;
 	size_t			y;
-	size_t			len;
 
-	len = ft_strlen(s1) + ft_strlen(buff);
-	ptr = (char *)malloc(sizeof(char) * (len + 1));
+	ptr = (char *)malloc((ft_strlen(s1) + ft_strlen(buff) + 1));
+	if (!ptr)
+		return (free(s1), s1 = NULL, NULL);
 	i = 0;
 	y = 0;
-	while (s1 != NULL && s1[i] != '\0')
+	while (s1 && s1[i] != '\0')
 	{
 		ptr[i] = s1[i];
 		i++;
 	}
 	free(s1);
-	while (buff != NULL && buff[y] != '\0')
+	s1 = NULL;
+	while (buff && buff[y] != '\0')
 	{
 		ptr[i++] = buff[y++];
 	}

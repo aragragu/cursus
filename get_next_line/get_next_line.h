@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:06:52 by aragragu          #+#    #+#             */
-/*   Updated: 2023/12/27 14:09:03 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/01/17 22:10:18 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <limits.h>
 
 char	*ft_strlcpy(char *dest, char *src, int stop);
-size_t	ft_strlen(char *str);
+int		ft_strlen(char *str);
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_strchr(char *s, int c);
 char	*read_line(char *str, int fd);
