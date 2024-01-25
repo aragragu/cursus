@@ -6,11 +6,11 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:23:10 by aragragu          #+#    #+#             */
-/*   Updated: 2024/01/17 22:43:17 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/01/25 12:06:36 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*read_line(char *str, int fd)
 {
