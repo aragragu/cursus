@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 21:51:21 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/26 04:05:58 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:43:18 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,14 @@ void print_stack1(t_stack **stack)
     printf("\n");
 }
 
+
 int main(int argc, char *argv[]) 
 {
     t_stack *list_a;
     t_stack *list_b;
     
+    list_a = NULL;
+    list_b = NULL;
     if (argc >= 2) 
     {
         check_argument(argv, &list_a);

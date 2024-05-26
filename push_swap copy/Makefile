@@ -6,13 +6,13 @@
 #    By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/23 05:13:54 by aragragu          #+#    #+#              #
-#    Updated: 2024/05/26 03:53:30 by aragragu         ###   ########.fr        #
+#    Updated: 2024/05/26 04:56:37 by aragragu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -O3 -Wall -Wextra -Werror 
 RM = rm -rf
 AR = ar -rc
 SRC = main.c parsing.c parsing2.c instruction.c instruction2.c instruction3.c \

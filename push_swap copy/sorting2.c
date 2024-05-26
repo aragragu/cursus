@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 22:30:56 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/26 01:23:02 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:40:21 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	sort_four(t_stack **list_a, t_stack **list_b)
 			rra(list_a);
 		position_list(list_a);
 	}
+	if (check_order(list_a))
+		return ;
 	pb(list_a, list_b);
 	position_list(list_a);
 	sort_three(list_a);
