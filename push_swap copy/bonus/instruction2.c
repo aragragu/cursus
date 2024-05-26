@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+	/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   instruction2.c                                     :+:      :+:    :+:   */
@@ -6,18 +6,16 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 21:24:17 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/26 21:54:23 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/26 06:08:22 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	ra(t_stack **list_a)
 {
 	t_stack	*allo;
 
-	if (!list_a)
-		return ;
 	allo = *list_a;
 	*list_a = (*list_a)->next;
 	allo->next = NULL;
@@ -29,8 +27,6 @@ void	rb(t_stack **list_b)
 {
 	t_stack	*allo2;
 
-	if (!list_b)
-		return ;
 	allo2 = *list_b;
 	*list_b = (*list_b)->next;
 	allo2->next = NULL;
@@ -43,8 +39,6 @@ void	rr(t_stack **list_a, t_stack **list_b)
 	t_stack	*allo;
 	t_stack	*allo2;
 
-	if (!list_a || !list_b)
-		return ;
 	allo = *list_a;
 	allo2 = *list_b;
 	*list_a = (*list_a)->next;
@@ -61,8 +55,6 @@ void	rra(t_stack **list_a)
 	t_stack	*allo;
 	t_stack	*pah;
 
-	if (!list_a)
-		return ;
 	allo = ft_lstlast(*list_a);
 	pah = *list_a;
 	while (pah)
@@ -80,8 +72,6 @@ void	rrb(t_stack **list_b)
 	t_stack	*allo2;
 	t_stack	*pah2;
 
-	if (!list_b)
-		return ;
 	allo2 = ft_lstlast(*list_b);
 	pah2 = *list_b;
 	while (pah2)

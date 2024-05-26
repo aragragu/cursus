@@ -6,11 +6,11 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 22:09:01 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/26 05:56:22 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/26 05:56:59 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 int	check_args(char *argv)
 {

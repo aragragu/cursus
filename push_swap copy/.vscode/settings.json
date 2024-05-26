@@ -12,6 +12,7 @@
         "set": "c",
         "unordered_map": "c",
         "unordered_set": "c",
-        "random": "c"
+        "random": "c",
+        "checker.h": "c"
     }
 }

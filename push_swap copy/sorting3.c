@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 22:34:00 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/25 22:40:10 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/26 05:23:46 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,4 @@ t_stack	*find_min(t_stack **list)
 		current = current->next;
 	}
 	return (min);
-}
-
-void	print_stack(t_stack **stack)
-{
-	t_stack	*current;
-
-	current = *stack;
-	while (current)
-	{
-		printf("||%d||\n", current->number);
-		current = current->next;
-	}
-	printf("\n");
 }

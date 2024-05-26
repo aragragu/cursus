@@ -6,11 +6,11 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 18:56:56 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/26 22:12:09 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/26 22:07:52 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	sa(t_stack **list_a)
 {
@@ -72,7 +72,7 @@ void	pa(t_stack **list_a, t_stack **list_b)
 {
 	t_stack	*allo;
 
-	if (!list_a || !list_b)
+if (!list_b || !*list_b || !list_a)
 		return ;
 	allo = *list_b;
 	*list_b = (*list_b)->next;
@@ -85,7 +85,7 @@ void	pb(t_stack **list_a, t_stack **list_b)
 {
 	t_stack	*allo;
 
-	if (!list_b || !list_a)
+	if (!list_a || !*list_a || !list_b)
 		return ;
 	allo = *list_a;
 	*list_a = (*list_a)->next;
