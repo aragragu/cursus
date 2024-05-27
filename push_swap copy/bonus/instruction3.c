@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 21:29:40 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/27 02:26:00 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/27 05:46:57 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	rrr(t_stack **list_a, t_stack **list_b)
 	t_stack	*pah;
 	t_stack	*pah2;
 
+	if (!*list_a || !*list_b)
+		return ;
 	allo = ft_lstlast(*list_a);
 	allo2 = ft_lstlast(*list_b);
 	pah = *list_a;
