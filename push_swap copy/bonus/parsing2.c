@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 22:09:01 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/27 02:25:51 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/27 04:26:06 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,14 @@ void	free_split(char **str)
 	free(str);
 }
 
-void	free_t_stack(t_stack **head)
+void	free_t_stack(t_stack **a)
 {
 	t_stack	*current;
 	t_stack	*next;
 
-	if (!head || !*head)
+	if (!a || !*a)
 		return ;
-	current = *head;
+	current = *a;
 	while (current)
 	{
 		next = current->next;

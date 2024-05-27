@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 05:45:36 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/27 03:19:49 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/27 05:16:03 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int	main(int argc, char *argv[])
 	instructions = NULL;
 	if (argc >= 2)
 	{
-		line = get_next_line(0);
 		check_argument(argv, &a);
+		line = get_next_line(0);
 		while (line)
 		{
 			check_in(line, &instructions, &a);
@@ -73,7 +73,8 @@ int	main(int argc, char *argv[])
 		}
 		use_instruct(&a, &b, &instructions);
 		final_check(&a, &b);
+		free_instruction(&instructions);
 	}
 	else
-		write(2, "Error\n", 6);
+		return (0);
 }

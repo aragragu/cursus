@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 05:45:50 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/27 03:06:43 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/27 05:04:35 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int				convert_numbers(char *str, int *num);
 int				check_list(t_stack **list, int num);
 int				check_args(char *argv);
 void			free_split(char **str);
-void			free_t_stack(t_stack **head);
+void			free_t_stack(t_stack **a);
 int				ft_isdigit(int c);
 char			**ft_split(char const *s, char c);
 int				ft_strncmp(char *s1, char *s2, size_t n);

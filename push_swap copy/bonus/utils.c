@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 05:54:28 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/27 02:53:04 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/27 05:08:42 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,19 @@ void	ft_error(t_instruction **instructions, t_stack **a)
 
 void	free_instruction(t_instruction **head)
 {
+	t_instruction	*current;
 	t_instruction	*tmp;
 
-	while (*head)
+	if (!head || !*head)
+		return ;
+	current = *head;
+	while (current)
 	{
-		tmp = (*head)->next;
-		free(*head);
-		*head = tmp;
+		tmp = current->next;
+		if (current->instruction)
+			free(current->instruction);
+		free(current);
+		current = tmp;
 	}
 }
 

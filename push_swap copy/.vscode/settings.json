@@ -13,6 +13,7 @@
         "unordered_map": "c",
         "unordered_set": "c",
         "random": "c",
-        "checker.h": "c"
+        "checker.h": "c",
+        "limits.h": "c"
     }
 }
