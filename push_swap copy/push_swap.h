@@ -6,14 +6,13 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 21:53:28 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/26 22:02:05 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/27 03:21:58 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>

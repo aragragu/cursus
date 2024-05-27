@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 21:51:21 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/26 07:38:34 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/27 03:27:42 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,8 @@ int	main(int argc, char *argv[])
 		check_argument(argv, &list_a);
 		if (!check_order(&list_a))
 			sort_stack(&list_a, &list_b);
-		print_list(list_a);
 		free_t_stack(&list_a);
 	}
 	else
 		return (0);
-}
-
-
-void	print_list(t_stack *list)
-{
-	t_stack	*tmp;
-
-	tmp = list;
-	while (tmp)
-	{
-		printf("%d\n", tmp->number);
-		tmp = tmp->next;
-	}
 }

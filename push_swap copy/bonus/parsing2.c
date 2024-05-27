@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 22:09:01 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/26 05:56:59 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/27 02:25:51 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,12 @@ void	free_t_stack(t_stack **head)
 		free(current);
 		current = next;
 	}
+}
+
+int	ft_isdigit(int c)
+{
+	if ((c >= '0' && c <= '9') || c == ' ' || c == '+' || c == '-')
+		return (1);
+	else
+		return (0);
 }

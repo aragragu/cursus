@@ -6,82 +6,80 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 05:53:35 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/26 05:56:15 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/27 02:14:33 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-
 int	ft_strlen(char *s)
-{
-	size_t	len;
-
-	if (!s)
-		return (0);
-	len = 0;
-	while (s[len] != '\0')
-		++len;
-	return (len);
-}
-
-char	*ft_strlcpy(char *dest, char *src, int stop)
-{
-	size_t	i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		if (stop && src[i] == '\n')
-		{
-			++i;
-			break ;
-		}
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-int	ft_strchr(char *s, int c)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
+	while (s[i])
 	{
-		if (s[i] == (char) c)
-			return (1);
 		i++;
+		if (s[i - 1] == '\n')
+			break ;
 	}
-	return (0);
+	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *buff)
+void	shift(char *buf, int endl)
 {
-	char			*ptr;
-	size_t			i;
-	size_t			y;
+	int	i;
 
-	ptr = (char *)malloc((ft_strlen(s1) + ft_strlen(buff) + 1));
-	if (!ptr)
-		return (free(s1), s1 = NULL, NULL);
 	i = 0;
-	y = 0;
-	while (s1 && s1[i] != '\0')
+	while (endl < BUFFER_SIZE && buf[endl])
+		buf[i++] = buf [endl++];
+	while (i < endl)
+		buf[i++] = 0;
+}
+
+static char	*alloc_totalen(char *line, char *buf, int *totlen)
+{
+	int		line_len;
+	int		buf_len;
+	char	*newstr;
+
+	line_len = 0;
+	buf_len = 0;
+	*totlen = 0;
+	if (!line && !buf)
+		return (NULL);
+	if (line)
+		line_len = ft_strlen(line);
+	buf_len = ft_strlen(buf);
+	*totlen = line_len + buf_len;
+	newstr = (char *) malloc(*totlen + 1);
+	return (newstr);
+}
+
+char	*ft_strjoin(char *line, char *buf)
+{
+	int		i;
+	int		count;
+	char	*newstr;
+	int		totlen;
+
+	i = 0;
+	count = 0;
+	newstr = alloc_totalen(line, buf, &totlen);
+	if (!newstr)
+		return (free_it(line), NULL);
+	while (line && line[count] && totlen > count)
 	{
-		ptr[i] = s1[i];
-		i++;
+		newstr[count] = line[count];
+		count++;
 	}
-	free(s1);
-	s1 = NULL;
-	while (buff && buff[y] != '\0')
+	free_it(line);
+	while (buf[i] && totlen > count)
 	{
-		ptr[i++] = buff[y++];
+		newstr[count++] = buf[i++];
+		if (buf[i - 1] == '\n')
+			break ;
 	}
-	ptr[i] = '\0';
-	return (ptr);
+	newstr[count] = '\0';
+	return (newstr);
 }

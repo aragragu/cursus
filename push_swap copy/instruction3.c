@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 21:29:40 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/26 22:00:48 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/27 03:21:25 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	rrr(t_stack **list_a, t_stack **list_b)
 	ft_lstadd_front(list_b, allo2);
 	write(1, "rrr\n", 4);
 }
-
 
 void	while_loop(t_stack *pah)
 {

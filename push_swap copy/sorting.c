@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:48:01 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/26 01:29:36 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/26 23:40:06 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,10 @@ void	fill_index( t_stack **list)
 	t_stack	*current;
 	t_stack	*current1;
 	t_stack	*allo;
-	int		i;
 	int		index;
 
 	current = *list;
 	current1 = *list;
-	i = ft_lstsize(*list);
 	index = 1;
 	while (current1)
 	{

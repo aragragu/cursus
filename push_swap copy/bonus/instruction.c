@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 18:56:56 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/26 22:07:52 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/27 02:15:09 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	sa(t_stack **list_a)
 	i = allo->number;
 	allo->number = allo->next->number;
 	allo->next->number = i;
-	write(1, "sa\n", 3);
 }
 
 void	sb(t_stack **list_b)
@@ -41,7 +40,6 @@ void	sb(t_stack **list_b)
 	g = allo->number;
 	allo->number = allo->next->number;
 	allo->next->number = g;
-	write(1, "sb\n", 3);
 }
 
 void	ss(t_stack **list_a, t_stack **list_b)
@@ -65,20 +63,18 @@ void	ss(t_stack **list_a, t_stack **list_b)
 	g = allo2->number;
 	allo2->number = allo2->next->number;
 	allo2->next->number = g;
-	write(1, "ss\n", 3);
 }
 
 void	pa(t_stack **list_a, t_stack **list_b)
 {
 	t_stack	*allo;
 
-if (!list_b || !*list_b || !list_a)
+	if (!list_b || !*list_b || !list_a)
 		return ;
 	allo = *list_b;
 	*list_b = (*list_b)->next;
 	allo->next = NULL;
 	ft_lstadd_front(list_a, allo);
-	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack **list_a, t_stack **list_b)
@@ -91,5 +87,4 @@ void	pb(t_stack **list_a, t_stack **list_b)
 	*list_a = (*list_a)->next;
 	allo->next = NULL;
 	ft_lstadd_front(list_b, allo);
-	write(1, "pb\n", 3);
 }

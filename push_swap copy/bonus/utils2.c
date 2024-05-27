@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 07:20:20 by aragragu          #+#    #+#             */
-/*   Updated: 2024/05/26 07:31:55 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/05/27 02:21:02 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	ft_lstadd_back2(t_instruction **lst, t_instruction *new)
 	else
 		ptr->next = new;
 }
+
 t_stack	*ft_lstlast(t_stack *lst)
 {
 	if (!lst)
@@ -78,27 +79,4 @@ t_instruction	*ft_lstlast2(t_instruction *lst)
 		lst = lst->next;
 	}
 	return (lst);
-}
-t_stack	*ft_lstnew1(int i)
-{
-	t_stack	*new_node;
-
-	new_node = (t_stack *)malloc(sizeof(t_stack));
-	if (!new_node)
-		return (NULL);
-	new_node->number = i;
-    new_node->next = NULL;
-	return (new_node);
-}
-
-t_instruction	*ft_lstnew2(char *line)
-{
-	t_instruction	*new_node;
-
-	new_node = (t_instruction *)malloc(sizeof(t_instruction));
-	if (!new_node)
-		return (NULL);
-	new_node-> instruction = line;
-    new_node->next = NULL;
-	return (new_node);
 }
