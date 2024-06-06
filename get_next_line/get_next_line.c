@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 21:06:54 by aragragu          #+#    #+#             */
-/*   Updated: 2024/01/17 22:41:55 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/05 11:51:19 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,26 @@ char	*get_next_line(int fd)
 	line = get_the_line(stash);
 	stash = new_stash(stash);
 	return (line);
+}
+
+void	f()
+{
+	system("leaks a.out");
+}
+
+int main()
+{
+	atexit(f);
+	char *line;
+	int fd = open("text.txt", O_RDONLY);
+	int i = 6;
+	printf("%d\n", fd);
+	line = get_next_line(fd);
+	if (!line)
+		printf("nothing here");
+	while (line)
+	{
+		printf("%s", line);
+		line = get_next_line(fd);
+	}
 }
