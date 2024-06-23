@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "so_long.h": "c",
-        "get_next_line.h": "c",
-        "stddef.h": "c",
-        "fcntl.h": "c",
-        "mlx.h": "c"
-    }
-}

@@ -6,16 +6,12 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 01:12:42 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/09 22:52:22 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/23 20:03:38 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    f()
-{
-    system("leaks so_long");
-}
 int     handle_closing(void *param)
 {
     (void)param;
@@ -47,7 +43,6 @@ int     handle_input(int key, void *param)
 int main(int argc, char *argv[])
 {
     t_data  data;
-    atexit(f);
     
     if (argc == 2)
     {
