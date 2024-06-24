@@ -6,38 +6,11 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 01:12:14 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/08 18:49:30 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:13:19 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-	char	*ptr;
-
-	i = 0;
-	ptr = s;
-	while (i < n)
-	{
-		ptr[i] = 0;
-		i++;
-	}
-}
-static void	*ft_calloc(size_t count, size_t size)
-{
-	void	*data;
-
-	if (count > 0 && size > 9223372036854775807ULL / count)
-		return (0);
-	data = malloc(count * size);
-	if (!data)
-		return (NULL);
-	ft_bzero(data, (count * size));
-	return (data);
-}
-
 
 static	int	count_words(const char *s, char c)
 {

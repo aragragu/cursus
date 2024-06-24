@@ -6,11 +6,11 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:14:01 by soel-bou          #+#    #+#             */
-/*   Updated: 2024/06/08 16:05:33 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/24 23:22:38 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "so_long.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {

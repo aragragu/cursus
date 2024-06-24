@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 15:47:24 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/24 16:11:23 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/24 17:56:01 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char	*read_map(const char *argv)
 		free(line);
 		line = get_next_line(fd);
 	}
+	free(line);
 	return (whole_map);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 02:11:19 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/24 16:14:11 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:35:21 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,38 @@ int	check_map2(char **whole_map)
 		i++;
 	}
 	return (player == 0 && exit == 0 && collectible == 0);
+}
+
+int	check_collectibles(t_data *allo)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	x = 0;
+	while (allo->map[y])
+	{
+		while (allo->map[y][x])
+		{
+			if (allo->map[y][x] == 'C')
+				return (1);
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+	return (0);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*data;
+
+	if (count > 0 && size > 9223372036854775807ULL / count)
+		return (0);
+	data = malloc(count * size);
+	if (!data)
+		return (NULL);
+	ft_bzero(data, (count * size));
+	return (data);
 }

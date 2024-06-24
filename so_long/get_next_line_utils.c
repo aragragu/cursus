@@ -6,11 +6,11 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 02:18:08 by soel-bou          #+#    #+#             */
-/*   Updated: 2024/06/09 18:16:57 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/24 23:22:44 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "so_long.h"
 
 int	ft_strlen(const char *s)
 {

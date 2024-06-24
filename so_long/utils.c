@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 19:52:00 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/24 17:13:35 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:34:49 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,36 +33,52 @@ void	print_error(const char *message)
 }
 
 void	free_split(char	**allo)
- {
-	int	i = 0;
+{
+	int	i;
+
+	i = 0;
 	while (allo[i])
 	{
 		free(allo[i++]);
 	}
 	free(allo);
- }
+}
 
-void destroy_mlx(t_data *allo, int i)
+void	destroy_mlx(t_data *allo, int i)
 {
-    if (!allo)
+	if (!allo)
 		print_error("Error: allo is NULL\n");
-    if (!allo->map)
-    {
-        free_split(allo->map); 
-        allo->map = NULL;
-    }
-    if (!allo->win_ptr)
-    {
-        mlx_destroy_image(allo->mlx_ptr, allo->win_ptr);
-        allo->win_ptr = NULL;
-    }
-    if (!allo->win_ptr)
-    {
-        mlx_destroy_window(allo->mlx_ptr, allo->win_ptr);
-        allo->win_ptr = NULL;
-    }
-    if (i == 0)
-        exit(0);
-    else
-        exit(1);
+	if (!allo->map)
+	{
+		free_split(allo->map);
+		allo->map = NULL;
+	}
+	if (!allo->win_ptr)
+	{
+		mlx_destroy_image(allo->mlx_ptr, allo->win_ptr);
+		allo->win_ptr = NULL;
+	}
+	if (!allo->win_ptr)
+	{
+		mlx_destroy_window(allo->mlx_ptr, allo->win_ptr);
+		allo->win_ptr = NULL;
+	}
+	if (i == 0)
+		exit(0);
+	else
+		exit(1);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+	char	*ptr;
+
+	i = 0;
+	ptr = s;
+	while (i < n)
+	{
+		ptr[i] = 0;
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:52:49 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/24 16:09:26 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/24 23:28:44 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,10 @@ int	check_file(const char *argv)
 
 	fd = 0;
 	lenght = ft_strlen(argv);
-	path = ft_strdup("");
 	if (lenght >= 4 && !ft_strncmp(&argv[lenght - 4], ".ber", 4))
 	{
-		path = ft_strjoin(path, (char *)(argv));
+		path = (char *)(argv);
 		fd = open(path, O_RDONLY);
-		free(path);
 		if (fd == -1)
 			print_error("Error: Can't open map file\n");
 	}
@@ -107,8 +105,8 @@ void	print_2d_array(char **map)
 	i = 0;
 	while (map[i])
 	{
-		printf("%s\n", map[i]);
+		ft_printf("%s\n", map[i]);
 		i++;
 	}
-	printf("\n");
+	ft_printf("\n");
 }
