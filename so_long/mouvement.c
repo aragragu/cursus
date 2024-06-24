@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 20:53:45 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/09 22:27:04 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/24 16:31:27 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void    move_up(t_data *allo)
 
     x = 0;
     y = 0;
-    player_position(allo, &x, &y);
+    player_position(allo->map, &x, &y);
     if (allo->map[y - 1][x] == 'E' && !check_collectibles(allo))
-        exit(0);
+        destroy_mlx(allo, 0);
     if (allo->map[y - 1][x] == '0' || allo->map[y - 1][x] == 'C')
     {
         allo->map[y - 1][x] = 'P';
@@ -41,9 +41,9 @@ void    move_down(t_data *allo)
 
     x = 0;
     y = 0;
-    player_position(allo, &x, &y);
+    player_position(allo->map, &x, &y);
     if (allo->map[y + 1][x] == 'E' && !check_collectibles(allo))
-        exit(0);
+        destroy_mlx(allo, 0);
     if (allo->map[y + 1][x] == '0' || allo->map[y + 1][x] == 'C')
     {
         allo->map[y + 1][x] = 'P';
@@ -62,9 +62,9 @@ void    move_right(t_data *allo)
 
     x = 0;
     y = 0;
-    player_position(allo, &x, &y);
+    player_position(allo->map, &x, &y);
     if (allo->map[y][x + 1] == 'E' && !check_collectibles(allo))
-        exit(0);
+        destroy_mlx(allo, 0);
     if (allo->map[y][x + 1] == '0' || allo->map[y][x + 1] == 'C')
     {
         allo->map[y][x + 1] = 'P';
@@ -83,9 +83,9 @@ void    move_left(t_data *allo)
 
     x = 0;
     y = 0;
-    player_position(allo, &x, &y);
+    player_position(allo->map, &x, &y);
     if (allo->map[y][x - 1] == 'E' && !check_collectibles(allo))
-        exit(0);
+        destroy_mlx(allo, 0);
     if (allo->map[y][x - 1] == '0' || allo->map[y][x - 1] == 'C')
     {
         allo->map[y][x - 1] = 'P';
@@ -100,18 +100,18 @@ void    move_left(t_data *allo)
 
 
 
-void    player_position(t_data *allo, int *x, int *y)
+void    player_position(char **map, int *x, int *y)
 {
     int i;
     int j;
 
     i = 0;
     j = 0;
-    while (allo->map[j])
+    while (map[j])
     {
-        while (allo->map[j][i])
+        while (map[j][i])
         {
-            if (allo->map[j][i] == 'P')
+            if (map[j][i] == 'P')
             {
                 *y = j;
                 *x = i;

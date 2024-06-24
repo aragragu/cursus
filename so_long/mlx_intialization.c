@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 22:02:23 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/09 22:28:23 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/24 16:21:24 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,17 @@ void  initialise_image(t_data *allo)
 void  initialise_mlx(t_data *allo)
 {
     allo->mlx_ptr = mlx_init();
-    allo->mouvement = 0;
     if (!allo->mlx_ptr)
-        exit(1);
-    
+        print_error("MLX ERROR\n");
+    allo->mouvement = 0;
     int lenght = ft_strlen(allo->map[0]) * 50;
     int weidth = ft_strlen2(allo->map) * 50;
     allo->win_ptr = mlx_new_window(allo->mlx_ptr, lenght, weidth, "so_long");
     if (!allo->win_ptr)
-        exit(1);
+    {
+        free(allo->win_ptr);
+        print_error("MLX ERROR\n");
+    }
     initialise_image(allo);
     fill_window(allo);
 }

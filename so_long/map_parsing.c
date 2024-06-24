@@ -6,13 +6,13 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 15:47:24 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/23 23:00:43 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/24 16:11:23 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	**check_valid_map(char *argv)
+void	check_valid_map(t_data *allo, char *argv)
 {
 	char	*whole_map;
 	char	**map;
@@ -30,7 +30,9 @@ char	**check_valid_map(char *argv)
 		print_error("Error: Map sides are not properly enclosed by walls\n");
 	}
 	free(whole_map);
-	return (map);
+	allo->map = map;
+	copy_map(allo);
+	flood_fill(allo);
 }
 
 char	*read_map(const char *argv)

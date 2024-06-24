@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 01:12:42 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/23 20:03:38 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/24 17:21:30 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int     handle_closing(void *param)
 {
     (void)param;
-    printf("the game has been closed\n");
+    write(2, "the game has been closed.\n", 26);
     exit(0);
 }
 
@@ -33,11 +33,15 @@ int     handle_input(int key, void *param)
         move_left(allo);
     else if (key == 53)
     {
-        // quit_game(allo);
-        printf("the key pressed is = %d wich is escape\n", key);
-        exit(0);
+        write(2, "Escape key has been pressed. Exiting game.\n", 43);
+        destroy_mlx(allo, 0);
     }
     return (0);
+}
+
+void    f()
+{
+    system("leaks so_long");
 }
 
 int main(int argc, char *argv[])
@@ -46,14 +50,17 @@ int main(int argc, char *argv[])
     
     if (argc == 2)
     {
-        data.map = check_valid_map(argv[1]);
+        atexit(f);
+        check_valid_map(&data, argv[1]);
         initialise_mlx(&data);
         mlx_key_hook(data.win_ptr, handle_input, &data);
         mlx_hook(data.win_ptr, 17, 0, handle_closing, &data);
         mlx_loop(data.mlx_ptr);
-        
-        mlx_destroy_image(data.mlx_ptr, data.win_ptr);
-        mlx_destroy_window(data.mlx_ptr, data.win_ptr);
+        if (!data.mlx_ptr)
+            printf("mkx is not there");
+        if (!data.win_ptr)
+            printf("win is not there");
+        destroy_mlx(&data, 0);
     }
     else
     printf("invalid args\n");

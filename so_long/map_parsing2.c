@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:52:49 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/23 22:55:42 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/24 16:09:26 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,63 @@ int	count_element(char *whole_map, int *player, int *exit, int *collectible)
 			if (whole_map[i + 1] == '\n')
 				return (0);
 		}
+		else if (whole_map[i] == 'F')
+			i++;
 		else if (whole_map[i] != '1' && whole_map[i] != '0')
 			return (0);
 		i++;
 	}
 	return (1);
+}
+
+void	copy_map(t_data *allo)
+{
+	char	**map2;
+	int		rows;
+	int		i;
+
+	rows = ft_strlen2(allo->map);
+	i = 0;
+	map2 = (char **)malloc((rows + 1) * sizeof(char *));
+	if (!map2)
+		return ;
+	while (allo->map[i])
+	{
+		map2[i] = (char *)malloc((ft_strlen(allo->map[i]) + 1) * sizeof(char));
+		if (!map2[i])
+		{
+			free_split(map2);
+			exit(1);
+		}
+		copy_cols(allo->map[i], map2[i]);
+		i++;
+	}
+	map2[rows] = NULL;
+	allo->map2 = map2;
+}
+
+void	copy_cols(char	*src, char	*dest)
+{
+	int		i;
+
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+}
+
+void	print_2d_array(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		printf("%s\n", map[i]);
+		i++;
+	}
+	printf("\n");
 }
