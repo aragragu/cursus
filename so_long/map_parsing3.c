@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 02:11:19 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/24 19:35:21 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/28 16:04:58 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,80 +17,82 @@ void	flood_fill(t_data *allo)
 	t_player	size;
 	t_player	cur;
 
-	player_position(allo->map2, &cur.x, &cur.y);
-	size.x = ft_strlen(allo->map2[0]);
-	size.y = ft_strlen2(allo->map2);
-	flood(allo->map2, size, cur, '1');
-	if (!check_map2(allo->map2))
+	allo->map2 = copy_map(allo);
+	allo->map3 = copy_map(allo);
+	player_position(allo->map, &cur.x, &cur.y, 'P');
+	size.x = ft_strlen(allo->map[0]);
+	size.y = ft_strlen2(allo->map);
+	if (!check_for_exit(allo->map2, size, cur) || \
+		!check_for_collectibles(allo->map3, allo, size, cur))
 	{
-		write(2, "Error: Player cannot reach all parts of the map\n", 49);
-		exit(1);
+		free_split(allo->map2);
+		free_split(allo->map3);
+		free_split(allo->map);
+		print_error("Error: Player cannot reach all parts of the map\n", 1);
 	}
 	free_split(allo->map2);
-}
-
-void	flood(char **map, t_player size, t_player cur, char wall)
-{
-	if (cur.x < 0 || cur.x >= size.x || cur.y < 0 || cur.y >= size.y \
-		|| map[cur.y][cur.x] == wall || map[cur.y][cur.x] == 'F')
-		return ;
-	map[cur.y][cur.x] = 'F';
-	flood(map, size, (t_player){cur.x - 1, cur.y}, wall);
-	flood(map, size, (t_player){cur.x + 1, cur.y}, wall);
-	flood(map, size, (t_player){cur.x, cur.y - 1}, wall);
-	flood(map, size, (t_player){cur.x, cur.y + 1}, wall);
-}
-
-int	check_map2(char **whole_map)
-{
-	int	player;
-	int	collectible;
-	int	exit;
-	int	i;
-
-	player = 0;
-	collectible = 0;
-	exit = 0;
-	i = 0;
-	while (whole_map[i])
+	free_split(allo->map3);
+	if ((size.x > 163 || size.y > 163))
 	{
-		if (!count_element(whole_map[i], &player, &exit, &collectible))
-			return (0);
-		i++;
+		free_split(allo->map);
+		print_error("map is too big\n", 1);
 	}
-	return (player == 0 && exit == 0 && collectible == 0);
 }
 
-int	check_collectibles(t_data *allo)
+int	check_for_exit(char **map, t_player size, t_player cur)
 {
-	int	y;
-	int	x;
-
-	y = 0;
-	x = 0;
-	while (allo->map[y])
-	{
-		while (allo->map[y][x])
-		{
-			if (allo->map[y][x] == 'C')
-				return (1);
-			x++;
-		}
-		x = 0;
-		y++;
-	}
-	return (0);
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*data;
-
-	if (count > 0 && size > 9223372036854775807ULL / count)
+	if (!map)
 		return (0);
-	data = malloc(count * size);
-	if (!data)
-		return (NULL);
-	ft_bzero(data, (count * size));
-	return (data);
+	if (!flood_fill_exit(map, size, cur))
+		return (0);
+	return (1);
+}
+
+int	check_for_collectibles(char **map, t_data *allo, \
+	t_player size, t_player cur)
+{
+	int	res;
+
+	if (!map)
+		return (0);
+	res = flood_fill_collectibles(map, size, cur);
+	if (res != allo->collectibles)
+		return (0);
+	return (1);
+}
+
+int	flood_fill_exit(char **map, t_player size, t_player cur)
+{
+	int	pah;
+
+	if (cur.x < 0 || cur.x >= size.x || cur.y < 0 || cur.y >= size.y \
+		|| map[cur.y][cur.x] == '1' || map[cur.y][cur.x] == 'F')
+		return (false);
+	if (map[cur.y][cur.x] == 'E')
+		return (true);
+	map[cur.y][cur.x] = 'F';
+	pah = (flood_fill_exit(map, size, (t_player){cur.x - 1, cur.y})
+			|| flood_fill_exit(map, size, (t_player){cur.x + 1, cur.y})
+			|| flood_fill_exit(map, size, (t_player){cur.x, cur.y - 1})
+			|| flood_fill_exit(map, size, (t_player){cur.x, cur.y + 1}));
+	return (pah);
+}
+
+int	flood_fill_collectibles(char **map, t_player size, t_player cur)
+{
+	int	reached;
+
+	reached = 0;
+	if (cur.x < 0 || cur.x >= size.x || cur.y < 0 || cur.y >= size.y \
+		|| map[cur.y][cur.x] == '1' || map[cur.y][cur.x] == 'F' \
+		|| map[cur.y][cur.x] == 'E')
+		return (false);
+	if (map[cur.y][cur.x] == 'C')
+		reached++;
+	map[cur.y][cur.x] = 'F';
+	reached += flood_fill_collectibles(map, size, (t_player){cur.x + 1, cur.y});
+	reached += flood_fill_collectibles(map, size, (t_player){cur.x - 1, cur.y});
+	reached += flood_fill_collectibles(map, size, (t_player){cur.x, cur.y + 1});
+	reached += flood_fill_collectibles(map, size, (t_player){cur.x, cur.y - 1});
+	return (reached);
 }

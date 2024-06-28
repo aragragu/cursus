@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 15:47:24 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/24 17:56:01 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:40:41 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,21 @@ void	check_valid_map(t_data *allo, char *argv)
 	char	**map;
 
 	whole_map = read_map(argv);
-	if (!check_map(whole_map))
+	if (!check_map(whole_map, allo))
 	{
 		free(whole_map);
-		print_error("Error: Invalid map content\n");
+		print_error("Error: Invalid map content\n", 1);
 	}
 	map = ft_split(whole_map, '\n');
 	if (!map_sides(map))
 	{
+		free(whole_map);
 		free_split(map);
-		print_error("Error: Map sides are not properly enclosed by walls\n");
+		print_error("Error: Map sides are not properly enclosed by walls\n", 1);
 	}
 	free(whole_map);
+	whole_map = NULL;
 	allo->map = map;
-	copy_map(allo);
 	flood_fill(allo);
 }
 
@@ -53,11 +54,10 @@ char	*read_map(const char *argv)
 		free(line);
 		line = get_next_line(fd);
 	}
-	free(line);
 	return (whole_map);
 }
 
-int	check_map(char *whole_map)
+int	check_map(char *whole_map, t_data *allo)
 {
 	int	player;
 	int	collectible;
@@ -68,10 +68,11 @@ int	check_map(char *whole_map)
 	collectible = 0;
 	exit = 0;
 	i = 0;
-	if (whole_map[0] == '\n')
+	if (!whole_map || whole_map[0] == '\n')
 		return (0);
 	if (!count_element(whole_map, &player, &exit, &collectible))
 		return (0);
+	allo->collectibles = collectible;
 	return (player == 1 && exit == 1 && collectible >= 1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 19:52:00 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/24 19:34:49 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:21:35 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,13 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
-void	print_error(const char *message)
+void	print_error(const char *message, int i)
 {
 	write(2, message, ft_strlen(message));
-	exit(1);
+	if (i == 0)
+		exit(0);
+	else
+		exit(1);
 }
 
 void	free_split(char	**allo)
@@ -37,6 +40,8 @@ void	free_split(char	**allo)
 	int	i;
 
 	i = 0;
+	if (allo == NULL)
+		return ;
 	while (allo[i])
 	{
 		free(allo[i++]);
@@ -44,41 +49,41 @@ void	free_split(char	**allo)
 	free(allo);
 }
 
-void	destroy_mlx(t_data *allo, int i)
+void	free_textures(t_data *allo, int exit_code)
 {
-	if (!allo)
-		print_error("Error: allo is NULL\n");
-	if (!allo->map)
+	int	i;
+
+	i = 0;
+	while (i < 5)
 	{
-		free_split(allo->map);
-		allo->map = NULL;
+		if (allo->textures[i])
+		{
+			mlx_destroy_image(allo->mlx_ptr, allo->textures[i]);
+			allo->textures[i] = NULL;
+		}
+		i++;
 	}
-	if (!allo->win_ptr)
-	{
-		mlx_destroy_image(allo->mlx_ptr, allo->win_ptr);
-		allo->win_ptr = NULL;
-	}
-	if (!allo->win_ptr)
+	if (allo->win_ptr)
 	{
 		mlx_destroy_window(allo->mlx_ptr, allo->win_ptr);
 		allo->win_ptr = NULL;
 	}
-	if (i == 0)
-		exit(0);
-	else
-		exit(1);
+	exit(exit_code);
+	return ;
 }
 
-void	ft_bzero(void *s, size_t n)
+void	destroy_mlx(t_data *allo, int exit_code)
 {
-	size_t	i;
-	char	*ptr;
-
-	i = 0;
-	ptr = s;
-	while (i < n)
+	if (!allo)
 	{
-		ptr[i] = 0;
-		i++;
+		print_error("Error: allo is NULL\n", 1);
+		free_split(allo->map);
+		exit(exit_code);
 	}
+	if (allo->map)
+	{
+		free_split(allo->map);
+		allo->map = NULL;
+	}
+	free_textures(allo, exit_code);
 }

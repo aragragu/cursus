@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:35:45 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/24 23:29:21 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/28 16:06:48 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	check_flag(va_list args, const char s, int *count)
 		ft_putnbr(va_arg(args, int), count);
 	else if (s == 'c')
 		ft_putchar(va_arg(args, int), count);
+	else if (s == 's')
+		ft_putstr(va_arg(args, char *), count);
 	else
 		ft_putchar(s, count);
 }
@@ -69,4 +71,15 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(ptr);
 	return (count);
+}
+
+void	ft_putstr(char *s, int *count)
+{
+	if (s == NULL)
+		ft_putstr("(null)", count);
+	while (s && *s)
+	{
+		ft_putchar(*s, count);
+		s++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 22:02:23 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/24 23:12:03 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:23:37 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	initialise_image(t_data *allo)
 	char	*wall;
 
 	background = "images/background.xpm";
-	coin = "images/coin5.xpm";
+	coin = "images/bottle.xpm";
 	door = "images/door.xpm";
 	player = "images/player.xpm";
 	wall = "images/wall.xpm";
@@ -44,17 +44,20 @@ void	initialise_mlx(t_data *allo)
 	int	lenght;
 	int	weidth;
 
-	allo->mlx_ptr = mlx_init();
-	if (!allo->mlx_ptr)
-		print_error("MLX ERROR\n");
-	allo->mouvement = 0;
 	lenght = ft_strlen(allo->map[0]) * 50;
 	weidth = ft_strlen2(allo->map) * 50;
+	allo->mlx_ptr = mlx_init();
+	if (!allo->mlx_ptr)
+	{
+		free_split(allo->map);
+		print_error("MLX ERROR\n", 1);
+	}
+	allo->mouvement = 0;
 	allo->win_ptr = mlx_new_window(allo->mlx_ptr, lenght, weidth, "so_long");
 	if (!allo->win_ptr)
 	{
-		free(allo->win_ptr);
-		print_error("MLX ERROR\n");
+		free_split(allo->map);
+		print_error("MLX ERROR\n", 1);
 	}
 	initialise_image(allo);
 	fill_window(allo);
@@ -95,7 +98,7 @@ void	put_to_window(t_data *allo, int image, int x, int y)
 			allo->textures[0], (x * 50), (y * 50));
 	else if (allo->map[y][x] == 'E')
 		mlx_put_image_to_window(allo->mlx_ptr, allo->win_ptr, \
-			allo->textures[4], (x * 50), (y * 50));
+			allo->textures[0], (x * 50), (y * 50));
 	mlx_put_image_to_window(allo->mlx_ptr, allo->win_ptr, \
 		allo->textures[image], (x * 50), (y * 50));
 }

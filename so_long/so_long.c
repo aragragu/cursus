@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 01:12:42 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/24 23:28:23 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:22:11 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int	main(int argc, char *argv[])
 		mlx_key_hook(data.win_ptr, handle_input, &data);
 		mlx_hook(data.win_ptr, 17, 0, handle_closing, &data);
 		mlx_loop(data.mlx_ptr);
-		destroy_mlx(&data, 0);
+		destroy_mlx(&data, 1);
 	}
 	else
-		ft_printf("invalid args\n");
+		print_error("Invalid args\n", 1);
 }

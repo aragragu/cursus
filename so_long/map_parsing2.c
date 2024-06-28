@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:52:49 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/24 23:28:44 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/28 20:58:22 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int	check_file(const char *argv)
 		path = (char *)(argv);
 		fd = open(path, O_RDONLY);
 		if (fd == -1)
-			print_error("Error: Can't open map file\n");
+			print_error("Error: Can't open map file\n", 1);
 	}
 	else
-		print_error("Error: Wrong map file extension\n");
+		print_error("Error: Wrong map file extension\n", 1);
 	return (fd);
 }
 
@@ -59,7 +59,7 @@ int	count_element(char *whole_map, int *player, int *exit, int *collectible)
 	return (1);
 }
 
-void	copy_map(t_data *allo)
+char	**copy_map(t_data *allo)
 {
 	char	**map2;
 	int		rows;
@@ -69,20 +69,20 @@ void	copy_map(t_data *allo)
 	i = 0;
 	map2 = (char **)malloc((rows + 1) * sizeof(char *));
 	if (!map2)
-		return ;
+		return (NULL);
 	while (allo->map[i])
 	{
 		map2[i] = (char *)malloc((ft_strlen(allo->map[i]) + 1) * sizeof(char));
 		if (!map2[i])
 		{
 			free_split(map2);
-			exit(1);
+			return (NULL);
 		}
 		copy_cols(allo->map[i], map2[i]);
 		i++;
 	}
 	map2[rows] = NULL;
-	allo->map2 = map2;
+	return (map2);
 }
 
 void	copy_cols(char	*src, char	*dest)
@@ -96,17 +96,4 @@ void	copy_cols(char	*src, char	*dest)
 		i++;
 	}
 	dest[i] = '\0';
-}
-
-void	print_2d_array(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		ft_printf("%s\n", map[i]);
-		i++;
-	}
-	ft_printf("\n");
 }

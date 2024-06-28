@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 20:53:45 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/24 23:33:01 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:20:19 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	move_up(t_data *allo)
 
 	x = 0;
 	y = 0;
-	player_position(allo->map, &x, &y);
-	if (allo->map[y - 1][x] == 'E' && !check_collectibles(allo))
+	player_position(allo->map, &x, &y, 'P');
+	if (allo->map[y - 1][x] == 'E' && !check_collectibles(allo->map))
 	{
 		ft_printf("player has finished the game\n");
 		destroy_mlx(allo, 0);
@@ -39,13 +39,15 @@ void	move_up(t_data *allo)
 
 void	move_down(t_data *allo)
 {
-	int	x;
-	int	y;
+	int			x;
+	int			y;
+	t_player	exit;
 
 	x = 0;
 	y = 0;
-	player_position(allo->map, &x, &y);
-	if (allo->map[y + 1][x] == 'E' && !check_collectibles(allo))
+	player_position(allo->map, &x, &y, 'P');
+	player_position(allo->map, &exit.x, &exit.y, 'E');
+	if (allo->map[y + 1][x] == 'E' && !check_collectibles(allo->map))
 	{
 		ft_printf("player has finished the game\n");
 		destroy_mlx(allo, 0);
@@ -64,13 +66,15 @@ void	move_down(t_data *allo)
 
 void	move_right(t_data *allo)
 {
-	int	x;
-	int	y;
+	int			x;
+	int			y;
+	t_player	exit;
 
 	x = 0;
 	y = 0;
-	player_position(allo->map, &x, &y);
-	if (allo->map[y][x + 1] == 'E' && !check_collectibles(allo))
+	player_position(allo->map, &x, &y, 'P');
+	player_position(allo->map, &exit.x, &exit.y, 'E');
+	if (allo->map[y][x + 1] == 'E' && !check_collectibles(allo->map))
 	{
 		ft_printf("player has finished the game\n");
 		destroy_mlx(allo, 0);
@@ -89,13 +93,15 @@ void	move_right(t_data *allo)
 
 void	move_left(t_data *allo)
 {
-	int	x;
-	int	y;
+	int			x;
+	int			y;
+	t_player	exit;
 
 	x = 0;
 	y = 0;
-	player_position(allo->map, &x, &y);
-	if (allo->map[y][x - 1] == 'E' && !check_collectibles(allo))
+	player_position(allo->map, &x, &y, 'P');
+	player_position(allo->map, &exit.x, &exit.y, 'E');
+	if (allo->map[y][x - 1] == 'E' && !check_collectibles(allo->map))
 	{
 		ft_printf("player has finished the game\n");
 		destroy_mlx(allo, 0);
@@ -112,7 +118,7 @@ void	move_left(t_data *allo)
 	return ;
 }
 
-void	player_position(char **map, int *x, int *y)
+void	player_position(char **map, int *x, int *y, char c)
 {
 	int	i;
 	int	j;
@@ -123,7 +129,7 @@ void	player_position(char **map, int *x, int *y)
 	{
 		while (map[j][i])
 		{
-			if (map[j][i] == 'P')
+			if (map[j][i] == c)
 			{
 				*y = j;
 				*x = i;
