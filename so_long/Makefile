@@ -6,13 +6,13 @@
 #    By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 23:43:09 by aragragu          #+#    #+#              #
-#    Updated: 2024/06/28 20:56:26 by aragragu         ###   ########.fr        #
+#    Updated: 2024/06/28 21:56:15 by aragragu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
 FRM = -lmlx -framework OpenGL -framework AppKit
 RM = rm -rf
 

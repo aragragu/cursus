@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 22:02:23 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/28 17:23:37 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/28 21:59:11 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,10 @@ void	initialise_image(t_data *allo)
 	char	*wall;
 
 	background = "images/background.xpm";
-	coin = "images/bottle.xpm";
+	coin = "images/coin.xpm";
 	door = "images/door.xpm";
 	player = "images/player.xpm";
 	wall = "images/wall.xpm";
-	allo->width = 50;
-	allo->height = 50;
 	allo->textures[0] = mlx_xpm_file_to_image(allo->mlx_ptr, background, \
 		&allo->width, &allo->height);
 	allo->textures[1] = mlx_xpm_file_to_image(allo->mlx_ptr, coin, \
@@ -37,6 +35,7 @@ void	initialise_image(t_data *allo)
 		&allo->width, &allo->height);
 	allo->textures[4] = mlx_xpm_file_to_image(allo->mlx_ptr, wall, \
 		&allo->width, &allo->height);
+	check_xpm_path(allo);
 }
 
 void	initialise_mlx(t_data *allo)
@@ -59,6 +58,8 @@ void	initialise_mlx(t_data *allo)
 		free_split(allo->map);
 		print_error("MLX ERROR\n", 1);
 	}
+	allo->width = 50;
+	allo->height = 50;
 	initialise_image(allo);
 	fill_window(allo);
 }

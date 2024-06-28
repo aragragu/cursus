@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 16:07:30 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/28 17:21:48 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/28 22:00:50 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,15 @@ void	ft_bzero(void *s, size_t n)
 	{
 		ptr[i] = 0;
 		i++;
+	}
+}
+
+void	check_xpm_path(t_data *allo)
+{
+	if (!allo->textures[0] || !allo->textures[1] || !allo->textures[2] \
+			|| !allo->textures[3] || !allo->textures[4])
+	{
+		free_split(allo->map);
+		print_error("invalid path to xpm file\n", 1);
 	}
 }

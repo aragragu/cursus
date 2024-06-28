@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 01:09:57 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/28 20:56:08 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/28 21:57:55 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ int		check_for_collectibles(char **map, t_data *allo, \
 int		flood_fill_exit(char **map, t_player size, t_player cur);
 int		flood_fill_collectibles(char **map, t_player size, t_player cur);
 void	free_textures(t_data *allo, int exit_code);
+void	check_xpm_path(t_data *allo);
 
 #endif
