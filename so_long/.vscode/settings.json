@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "mlx.h": "c",
-        "ios": "c",
-        "system_error": "c"
-    }
-}

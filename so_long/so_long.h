@@ -6,25 +6,31 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 01:09:57 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/28 21:57:55 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/29 13:06:29 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <stdio.h>
 # include <mlx.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-# include <stddef.h>
 # include <stdarg.h>
 # include <stdbool.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
+
+# define ERR_INVALID_COLS \
+	"Error: Inconsistent number of columns in the map"
+# define ERR_INVALID_TOP_BOTTOM \
+	"Error: Top or bottom border is not properly enclosed"
+# define ERR_INVALID_SIDES \
+	"Error: Left or right border is not properly enclosed"
+# define ERR_MISSING_ELEMENTS "Error: Missing player, exit, or collectible"
 
 typedef struct s_data
 {
@@ -93,7 +99,7 @@ int		check_for_collectibles(char **map, t_data *allo, \
 		t_player size, t_player cur);
 int		flood_fill_exit(char **map, t_player size, t_player cur);
 int		flood_fill_collectibles(char **map, t_player size, t_player cur);
-void	free_textures(t_data *allo, int exit_code);
+void	free_textures(t_data *allo);
 void	check_xpm_path(t_data *allo);
 
 #endif

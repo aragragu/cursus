@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 19:52:00 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/28 17:21:35 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/29 11:41:00 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	free_split(char	**allo)
 	free(allo);
 }
 
-void	free_textures(t_data *allo, int exit_code)
+void	free_textures(t_data *allo)
 {
 	int	i;
 
@@ -68,7 +68,6 @@ void	free_textures(t_data *allo, int exit_code)
 		mlx_destroy_window(allo->mlx_ptr, allo->win_ptr);
 		allo->win_ptr = NULL;
 	}
-	exit(exit_code);
 	return ;
 }
 
@@ -85,5 +84,6 @@ void	destroy_mlx(t_data *allo, int exit_code)
 		free_split(allo->map);
 		allo->map = NULL;
 	}
-	free_textures(allo, exit_code);
+	free_textures(allo);
+	exit(exit_code);
 }
