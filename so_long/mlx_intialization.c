@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 22:02:23 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/28 21:59:11 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/29 20:01:33 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	initialise_image(t_data *allo)
 	char	*wall;
 
 	background = "images/background.xpm";
-	coin = "images/coin.xpm";
+	coin = "images/bottle.xpm";
 	door = "images/door.xpm";
 	player = "images/player.xpm";
 	wall = "images/wall.xpm";

@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:52:49 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/28 20:58:22 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/29 21:52:23 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ int	count_element(char *whole_map, int *player, int *exit, int *collectible)
 			if (whole_map[i + 1] == '\n')
 				return (0);
 		}
-		else if (whole_map[i] == 'F')
-			i++;
 		else if (whole_map[i] != '1' && whole_map[i] != '0')
 			return (0);
 		i++;

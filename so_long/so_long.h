@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 01:09:57 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/29 13:06:29 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/29 21:51:57 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 	"Error: Top or bottom border is not properly enclosed"
 # define ERR_INVALID_SIDES \
 	"Error: Left or right border is not properly enclosed"
-# define ERR_MISSING_ELEMENTS "Error: Missing player, exit, or collectible"
+# define ERR_MISSING_ELEMENTS "Error: Missing player, or exit, or collectible"
 
 typedef struct s_data
 {

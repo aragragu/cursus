@@ -6,7 +6,7 @@
 /*   By: aragragu <aragragu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 20:53:45 by aragragu          #+#    #+#             */
-/*   Updated: 2024/06/28 17:20:19 by aragragu         ###   ########.fr       */
+/*   Updated: 2024/06/29 20:09:03 by aragragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	move_up(t_data *allo)
 	player_position(allo->map, &x, &y, 'P');
 	if (allo->map[y - 1][x] == 'E' && !check_collectibles(allo->map))
 	{
+		allo->mouvement++;
+		ft_printf("number of mouvement is : %d\n", allo->mouvement);
 		ft_printf("player has finished the game\n");
 		destroy_mlx(allo, 0);
 	}
@@ -49,6 +51,8 @@ void	move_down(t_data *allo)
 	player_position(allo->map, &exit.x, &exit.y, 'E');
 	if (allo->map[y + 1][x] == 'E' && !check_collectibles(allo->map))
 	{
+		allo->mouvement++;
+		ft_printf("number of mouvement is : %d\n", allo->mouvement);
 		ft_printf("player has finished the game\n");
 		destroy_mlx(allo, 0);
 	}
@@ -76,6 +80,8 @@ void	move_right(t_data *allo)
 	player_position(allo->map, &exit.x, &exit.y, 'E');
 	if (allo->map[y][x + 1] == 'E' && !check_collectibles(allo->map))
 	{
+		allo->mouvement++;
+		ft_printf("number of mouvement is : %d\n", allo->mouvement);
 		ft_printf("player has finished the game\n");
 		destroy_mlx(allo, 0);
 	}
@@ -103,6 +109,8 @@ void	move_left(t_data *allo)
 	player_position(allo->map, &exit.x, &exit.y, 'E');
 	if (allo->map[y][x - 1] == 'E' && !check_collectibles(allo->map))
 	{
+		allo->mouvement++;
+		ft_printf("number of mouvement is : %d\n", allo->mouvement);
 		ft_printf("player has finished the game\n");
 		destroy_mlx(allo, 0);
 	}
